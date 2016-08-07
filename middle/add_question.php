@@ -15,10 +15,14 @@ $input3       = $_POST["input3"];
 $correct1     = $_POST["correct1"];
 $correct2     = $_POST["correct2"];
 $correct3     = $_POST["correct3"];
+$questionType = $_POST["questionType"];
 $difficulty   = $_POST["difficulty"];
 
 createNewQuestion(
     $functionName, $question,
     $input1, $input2, $input3,
-    $correct1, $correct2, $correct3, $difficulty
+    $correct1, $correct2, $correct3, $questionType, $difficulty
 );
+
+
+?>
