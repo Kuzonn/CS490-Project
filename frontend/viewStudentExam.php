@@ -5,11 +5,14 @@
 
 <head>
     <title>Exam Results</title>
+    <link rel="stylesheet" type="text/css" href="boxedStylesheet.css">
     <style>
         body {
             position: relative;
         }
         h1 {
+            width: 50%;
+            float: left;
             margin: 0 0 10px;
             font-size: 20pt;
         }
@@ -21,7 +24,8 @@
             margin: 0;
         }
         #totalPoints {
-            position: absolute;
+            float: right;
+            text-align: right;
             top: 0;
             right: 5px;
         }
@@ -38,7 +42,11 @@
     </style>
 </head>
 <body>
-
+    <ul>     
+        <li><a href="studentL.php">Examination Nation</a></li>
+        <li><a href="">About</a></li>
+        <li style="float: right"><a href="../logout.php">Logout</a></li>
+    </ul>
 <!--<b>Exam Results</b>-->
 
 <?php
