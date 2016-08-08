@@ -62,6 +62,11 @@
             <input type="text" id="input3" name="input3"><br>
             <label for="correct3">Answer 3:</label><br>
             <input type="text" id="correct3" name="correct3"><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Question Type</legend>
+                <input type="radio" name="questionType" id="questionType" value="recursive"> Recursive<br>
+                <input type="radio" name="questionType" id="questionType" value="iterative"> Iterative
         </fieldset>
         <label for="difficulty">Difficulty (Easy, Medium, Hard):<input type="text" id="difficulty" name="difficulty"><br>
 </form>
@@ -123,6 +128,7 @@
             "correct1"    : document.getElementById("correct1").value,
             "correct2"    : document.getElementById("correct2").value,
             "correct3"    : document.getElementById("correct3").value,
+            "questionType": document.getElementById("questionType").value,
             "difficulty"  : document.getElementById("difficulty").value
         };
     }
