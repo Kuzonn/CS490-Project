@@ -4,9 +4,22 @@
         <title>View Questions</title>
         <link rel="stylesheet" type="text/css" href="boxedStylesheet.css">
 <style>
-        fieldset {
-                background-color: white;
+        .easy {
+            background-color: lightgreen;
+            float: left;
+            width: 33%;
         }
+        .medium {
+            background-color: yellow;
+            float: left;
+            width: 33%;
+        }
+        .hard {
+            background-color: red;
+            float: left;
+            width: 33%;
+        }
+
 </style>
 </head>
 <body>
@@ -15,34 +28,65 @@
                 <li><a href="">About</a></li>
                 <li style="float: right"><a href="../logout.php">Logout</a></li>
         </ul>
+        <h1 align="center">Question Bank</h1>
 <?php
-        include "../backend/query_db.php";
-        $link = connectToDatabase();
-        global $questionsTable;
-        $query = "SELECT * FROM " . $questionsTable;
-        $result = mysqli_query($link, $query);
-        if ($result == NULL) {
-            echo "Failed";
-        }
+    include "../backend/query_db.php";
+    
+    echo "<div class=\"easy\">";
+    foreach(getAllEasyAnswersFromQuestions() as $Easy){
+        $Question = $Easy['Question'];
+        $Input1 = $Easy['Input1'];
+        $Input2 = $Easy['Input2'];
+        $Input3 = $Easy['Input3'];
+        $Correct1 = $Easy['Correct1'];
+        $Correct2 = $Easy['Correct2'];
+        $Correct3 = $Easy['Correct3'];
 
-        echo "<h1 align=\"center\">Question Bank</h1><br><br>";
+        echo "<fieldset>";
+        echo "    <b>$Question</b><br>";
+        echo "    <b>$Input1</b>:$Correct1<br>";
+        echo "    <b>$Input2</b>:$Correct2<br>";
+        echo "    <b>$Input3</b>:$Correct3<br>";
+        echo "</fieldset>";
+    }
+    echo "</div>";
+    echo "<div class=\"medium\">";
+    foreach(getAllMediumAnswersFromQuestions() as $Medium){
+       $Question = $Medium['Question'];
+       $Input1 = $Medium['Input1'];
+       $Input2 = $Medium['Input2'];
+       $Input3 = $Medium['Input3'];
+       $Correct1 = $Medium['Correct1'];
+       $Correct2 = $Medium['Correct2'];
+       $Correct3 = $Medium['Correct3'];
 
-        while($row = mysqli_fetch_array($result)){
-            $QID = $row['QID'];
-            $Question = $row['Question'];
-            $Input1 = $row['Input1'];
-            $Input2 = $row['Input2'];
-            $Input3 = $row['Input3'];
-            $Correct1 = $row['Correct1'];
-            $Correct2 = $row['Correct2'];
-            $Correct3 = $row['Correct3'];
-            $Difficulty = $row['Difficulty'];
+       echo "<fieldset>";
+       echo "    <b>$Question</b><br>";
+       echo "    <b>$Input1</b>:$Correct1<br>";
+       echo "    <b>$Input2</b>:$Correct2<br>";
+       echo "    <b>$Input3</b>:$Correct3<br>";
+       echo "</fieldset>";
+    }
+    echo "</div>";
+    echo "<div class=\"hard\">";
+    foreach(getAllHardAnswersFromQuestions() as $Hard){
+        $Question = $Hard['Question'];
+        $Input1 = $Hard['Input1'];
+        $Input2 = $Hard['Input2'];
+        $Input3 = $Hard['Input3'];
+        $Correct1 = $Hard['Correct1'];
+        $Correct2 = $Hard['Correct2'];
+        $Correct3 = $Hard['Correct3'];
 
-            echo "<fieldset><b>$Question</b><br><br><b>$Input1:</b> $Correct1<br><b>$Input2:</b> $Correct2<br><b>$Input3:</b> $Correct3<br><br>$Difficulty</fieldset>";
-            echo "<a href=\"deleteQuestions.php?id=$QID\" class=\"deleteButton\">Delete</a>";
-            echo "<br><br>";
-        }    
-        mysqli_close($link);
+        echo "<fieldset>";
+        echo "    <b>$Question</b><br>";
+        echo "    <b>$Input1</b>:$Correct1<br>";
+        echo "    <b>$Input2</b>:$Correct2<br>";
+        echo "    <b>$Input3</b>:$Correct3<br>";
+        echo "</fieldset>";
+    }
+    echo "</div>";
 ?>
+
 </body>
 </html>
